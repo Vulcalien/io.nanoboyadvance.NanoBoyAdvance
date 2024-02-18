@@ -6,20 +6,20 @@ command: NanoBoyAdvance
 finish-args:
   - --share=ipc
   - --socket=fallback-x11
+  - --socket=wayland
   - --device=dri
   - --socket=pulseaudio
 cleanup:
   - '/include'
   - '/lib/cmake'
   - '/lib/pkgconfig'
-  - '/lib/debug'
   - '*.a'
 modules:
   - shared-modules/glew/glew.json
   - shared-modules/glu/glu-9.json
 
   - name: fmtlib
-    buildsystem: cmake
+    buildsystem: cmake-ninja
     sources:
       - type: git
         url: https://github.com/fmtlib/fmt
@@ -27,7 +27,7 @@ modules:
         commit: f5e54359df4c26b6230fc61d38aa294581393084
 
   - name: toml11
-    buildsystem: cmake
+    buildsystem: cmake-ninja
     sources:
       - type: git
         url: https://github.com/ToruNiina/toml11
@@ -35,7 +35,7 @@ modules:
         commit: dcfe39a783a94e8d52c885e5883a6fbb21529019
 
   - name: unarr
-    buildsystem: cmake
+    buildsystem: cmake-ninja
     sources:
       - type: git
         url: https://github.com/selmf/unarr
@@ -43,7 +43,7 @@ modules:
         commit: b211040df83dee513362cdeb9bd87afa26fd5e38
 
   - name: NanoBoyAdvance
-    buildsystem: cmake
+    buildsystem: cmake-ninja
     config-opts:
       - -D CMAKE_BUILD_TYPE=Release
       - -D USE_SYSTEM_FMT=ON
