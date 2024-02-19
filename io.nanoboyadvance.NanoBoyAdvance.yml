@@ -7,10 +7,9 @@ finish-args:
   - --share=ipc
   - --socket=fallback-x11
   - --socket=wayland
-  - --device=dri
   - --socket=pulseaudio
   - --filesystem=host # for save files
-  - --device=all      # for controllers
+  - --device=all      # for GPU and controllers
 cleanup:
   - '/include'
   - '/lib/cmake'
