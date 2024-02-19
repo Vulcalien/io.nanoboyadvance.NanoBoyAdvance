@@ -9,6 +9,8 @@ finish-args:
   - --socket=wayland
   - --device=dri
   - --socket=pulseaudio
+  - --filesystem=host # for save files
+  - --device=all      # for controllers
 cleanup:
   - '/include'
   - '/lib/cmake'
@@ -46,9 +48,12 @@ modules:
     buildsystem: cmake-ninja
     config-opts:
       - -D CMAKE_BUILD_TYPE=Release
+      - -D PORTABLE_MODE=OFF
       - -D USE_SYSTEM_FMT=ON
       - -D USE_SYSTEM_TOML11=ON
       - -D USE_SYSTEM_UNARR=ON
     sources:
       - type: git
         url: https://github.com/nba-emu/NanoBoyAdvance
+        tag: v1.8.0
+        commit: 752d4604ce3d1f978c8fca17b6f37e0d96703ec0
